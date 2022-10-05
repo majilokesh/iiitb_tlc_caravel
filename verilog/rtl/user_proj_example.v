@@ -43,6 +43,11 @@ module user_proj_example #(
     wire [`MPRJ_IO_PADS-1:0] io_in;
     wire [`MPRJ_IO_PADS-1:0] io_out;
     wire [`MPRJ_IO_PADS-1:0] io_oeb;
+	
+    assign io_out[35:33] = light_highway;
+    assign io_out[32:30] = light_farm;
+    assign io_oeb = 0;
+    assign {clk,rst_n,C} = io_in[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-3];
     
     iiitb_tlc dut(light_highway, light_farm, C, clk, rst_n);
     
